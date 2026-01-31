@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Camp Nouve em 2026</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("campnouve.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 6px black;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.75); /* TRANSPARÊNCIA */
+            backdrop-filter: blur(4px); /* efeito vidro (opcional) */
+        }
+
+        th, td {
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Camp Nouve em 2026</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Jogador</th>
+            <th>Posição</th>
+            <th>Jogos</th>
+            <th>Gols</th>
+            <th>Assistências</th>
+            <th>MVP</th>
+        </tr>
+    </thead>
+
+    <tbody id="corpo-tabela"></tbody>
+</table>
+
+<script>
+const jogadores = [
+    { num: "", nome: "GOLEIROS", pos: "TITULO" },
+    { num: 0, nome: "Gabriel", pos: "GOL", jogos: 0, gols: 0, ass: 0, mvp: 0 },
+    { num: "x", nome: "Marcio Vita", pos: "GOL", jogos: 1, gols: 0, ass: 0, mvp: 0 },
+    { num: 1, nome: "Nego", pos: "GOL", jogos: 3, gols: 0, ass: 0, mvp: 1 },
+
+    { num: "", nome: "LATERAL DIREITO", pos: "TITULO" },
+    { num: "x", nome: "Paulo", pos: "LD", jogos: 4, gols: 1, ass: 0, mvp: 0 },
+
+    { num: "", nome: "ZAGUEIROS", pos: "TITULO" },
+    { num: 13, nome: "Brayan", pos: "ZAG", jogos: 3, gols: 0, ass: 0, mvp: 0 },
+    { num: 22, nome: "Erik", pos: "ZAG", jogos: 4, gols: 0, ass: 0, mvp: 0 },
+    { num: 3, nome: "Kauan", pos: "ZAG", jogos: 2, gols: 2, ass: 0, mvp: 0 },
+    { num: 5, nome: "Rodrigo", pos: "ZAG", jogos: 4, gols: 0, ass: 0, mvp: 0 },
+
+    { num: "", nome: "LATERAL ESQUERDO", pos: "TITULO" },
+    { num: 23, nome: "Ghust Cavalão", pos: "LE", jogos: 3, gols: 0, ass: 0, mvp: 0 },
+    { num: 70, nome: "Diego", pos: "LE", jogos: 2, gols: 0, ass: 0, mvp: 0 },
+    { num: 47, nome: "Isaac", pos: "LE", jogos: 0, gols: 0, ass: 0, mvp: 0 },
+
+    { num: "", nome: "VOLANTES", pos: "TITULO" },
+    { num: 8, nome: "Adryel", pos: "VOL", jogos: 4, gols: 1, ass: 1, mvp: 0 },
+
+    { num: "", nome: "MEIO-CAMPO", pos: "TITULO" },
+    { num: 10, nome: "Cauã", pos: "MC", jogos: 3, gols: 2, ass: 1, mvp: 0 },
+    { num: 19, nome: "Jaqueson", pos: "MC", jogos: 1, gols: 0, ass: 1, mvp: 0 },
+    { num: 36, nome: "Nikolas", pos: "MC", jogos: 3, gols: 0, ass: 1, mvp: 0 },
+
+    { num: "", nome: "MEIAS", pos: "TITULO" },
+    { num: 99, nome: "Fernando", pos: "MEI", jogos: 2, gols: 1, ass: 0, mvp: 0 },
+    { num: 11, nome: "Jeff", pos: "MEI", jogos: 4, gols: 0, ass: 1, mvp: 0 },
+    { num: 77, nome: "Weslley", pos: "MEI", jogos: 3, gols: 3, ass: 0, mvp: 0 },
+
+    { num: "", nome: "ATAQUE", pos: "TITULO" },
+    { num: 9, nome: "Heitor", pos: "ATA", jogos: 1, gols: 0, ass: 0, mvp: 0 },
+    { num: 90, nome: "Henrique", pos: "ATA", jogos: 0, gols: 0, ass: 0, mvp: 0 },
+    { num: 20, nome: "Assis", pos: "ATA", jogos: 0, gols: 0, ass: 0, mvp: 0 }
+];
+
+const tbody = document.getElementById("corpo-tabela");
+
+jogadores.forEach(j => {
+    if (j.pos === "TITULO") {
+        tbody.innerHTML += `
+            <tr>
+                <td colspan="7" style="
+                    background: rgba(0,0,0,0.8);
+                    color: white;
+                    font-weight: bold;
+                    text-align: center;
+                ">
+                    ${j.nome}
+                </td>
+            </tr>
+        `;
+    } else {
+        tbody.innerHTML += `
+            <tr>
+                <td>${j.num}</td>
+                <td>${j.nome}</td>
+                <td>${j.pos}</td>
+                <td>${j.jogos}</td>
+                <td>${j.gols}</td>
+                <td>${j.ass}</td>
+                <td>${j.mvp}</td>
+            </tr>
+        `;
+    }
+});
+</script>
+
+
+</body>
+</html>
