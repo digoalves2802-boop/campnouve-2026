@@ -60,7 +60,6 @@
             <th>Jogos</th>
             <th>Gols</th>
             <th>Assistências</th>
-            <th>MVP</th>
         </tr>
     </thead>
 
@@ -70,49 +69,49 @@
 <script>
 const jogadores = [
     { num: "", nome: "GOLEIROS", pos: "TITULO" },
-    { num: 0, nome: "Gabriel", pos: "GOL", jogos: 0, gols: 0, ass: 0, mvp: 0 },
-    { num: "x", nome: "Marcio Vita", pos: "GOL", jogos: 3, gols: 0, ass: 0, mvp: 0 },
-    { num: 1, nome: "Nego", pos: "GOL", jogos: 7, gols: 0, ass: 0, mvp: 1 },
+    { num: 0, nome: "Gabriel", pos: "GOL", jogos: 1, gols: 0, ass: 0,},
+    { num: "x", nome: "Marcio Vita", pos: "GOL", jogos: 3, gols: 0, ass: 0,},
+    { num: 1, nome: "Nego", pos: "GOL", jogos: 8, gols: 0, ass: 0, },
 
     { num: "", nome: "LATERAL DIREITO", pos: "TITULO" },
-    { num: 3, nome: "Kauan", pos: "LD", jogos: 6, gols: 9, ass: 1, mvp: 1 },
-    { num: 23, nome: "Ghust Cavalão", pos: "LD", jogos: 6, gols: 0, ass: 0, mvp: 0 },
+    { num: 3, nome: "Kauan", pos: "LD", jogos: 8, gols: 11, ass: 1,},
+    { num: 23, nome: "Ghust Cavalão", pos: "LD", jogos: 6, gols: 0, ass: 0,},
 
     { num: "", nome: "ZAGUEIROS", pos: "TITULO" },
-    { num: 13, nome: "Brayan", pos: "ZAG", jogos: 5, gols: 0, ass: 0, mvp: 0 },
-    { num: 22, nome: "Erik", pos: "ZAG", jogos: 6, gols: 0, ass: 0, mvp: 0 },
-    { num: 5, nome: "Rodrigo", pos: "ZAG", jogos: 7, gols: 0, ass: 0, mvp: 0 },
+    { num: 13, nome: "Brayan", pos: "ZAG", jogos: 7, gols: 0, ass: 0,},
+    { num: 22, nome: "Erik", pos: "ZAG", jogos: 7, gols: 0, ass: 0,},
+    { num: 5, nome: "Rodrigo", pos: "ZAG", jogos: 9, gols: 0, ass: 0,},
 
     { num: "", nome: "LATERAL ESQUERDO", pos: "TITULO" },
-    { num: 51, nome: "Paulin", pos: "LE", jogos: 8, gols: 1, ass: 0, mvp: 0 },
-    { num: 70, nome: "Diego", pos: "LE", jogos: 3, gols: 0, ass: 0, mvp: 0 },
-    { num: 47, nome: "Isaac", pos: "LE", jogos: 0, gols: 0, ass: 0, mvp: 0 },
+    { num: 51, nome: "Paulin", pos: "LE", jogos: 10, gols: 3, ass: 0,},
+    { num: 70, nome: "Diego", pos: "LE", jogos: 4, gols: 0, ass: 0,},
+    { num: 47, nome: "Isaac", pos: "LE", jogos: 0, gols: 0, ass: 0,},
 
     { num: "", nome: "VOLANTES", pos: "TITULO" },
-    { num: 8, nome: "Adryel", pos: "VOL", jogos: 7, gols: 2, ass: 1, mvp: 1 },
+    { num: 8, nome: "Adryel", pos: "VOL", jogos: 9, gols: 2, ass: 1, },
 
     { num: "", nome: "MEIO-CAMPO", pos: "TITULO" },
-    { num: 19, nome: "Jaqueson", pos: "MC", jogos: 1, gols: 0, ass: 1, mvp: 0 },
-    { num: 36, nome: "Nikolas", pos: "MC", jogos: 5, gols: 0, ass: 2, mvp: 0 },
+    { num: 19, nome: "Jaqueson", pos: "MC", jogos: 1, gols: 0, ass: 1,},
+    { num: 36, nome: "Nikolas", pos: "MC", jogos: 7, gols: 0, ass: 2,},
 
     { num: "", nome: "MEIAS ARMADORES", pos: "TITULO" },
-    { num: 99, nome: "Fernando", pos: "MEI", jogos: 3, gols: 2, ass: 1, mvp: 0 },
-    { num: 11, nome: "Jeff", pos: "MEI", jogos: 8, gols: 2, ass: 5, mvp: 0 },
-    { num: 77, nome: "Weslley", pos: "MEI", jogos: 5, gols: 6, ass: 3, mvp: 1 },
-    { num: "x", nome: "Arthur", pos:"MEI", jogos: 3, gols: 0, ass: 0, mvp: 0 },
+    { num: 99, nome: "Fernando", pos: "MEI", jogos: 4, gols: 2, ass: 1,},
+    { num: 11, nome: "Jeff", pos: "MEI", jogos: 10, gols: 2, ass: 5,},
+    { num: 77, nome: "Weslley", pos: "MEI", jogos: 7, gols: 6, ass: 3,},
+    { num: "x", nome: "Arthur", pos:"MEI", jogos: 4, gols: 0, ass: 0,},
 
     { num: "", nome: "PONTA DIREITA", pos:"TITULO" },
-    { num: 7, nome: "D.Paiva", pos:"PD", jogos: 5, gols: 0, ass: 0, mvp: 0 },
-    { num: 10, nome: "Cauã", pos: "PD", jogos: 5, gols: 3, ass: 1, mvp: 0 },
+    { num: 7, nome: "D.Paiva", pos:"PD", jogos: 7, gols: 0, ass: 0,},
+    { num: 10, nome: "Cauã", pos: "PD", jogos: 6, gols: 3, ass: 1,},
 
     { num: "", nome: "CENTROAVANTE", pos: "TITULO" },
-    { num: 9, nome: "Heitor", pos: "ATA", jogos: 3, gols: 1, ass: 0, mvp: 0 },
-    { num: 90, nome: "Henrique", pos: "ATA", jogos: 0, gols: 0, ass: 0, mvp: 0 },
-    { num: 20, nome: "Assis", pos: "ATA", jogos: 2, gols: 1, ass: 2, mvp: 0 },
+    { num: 9, nome: "Heitor", pos: "ATA", jogos: 4, gols: 1, ass: 0,},
+    { num: 90, nome: "Henrique", pos: "ATA", jogos: 0, gols: 0, ass: 0,},
+    { num: 20, nome: "Assis", pos: "ATA", jogos: 4, gols: 1, ass: 2,},
 
     { num: "", nome: "PONTA ESQUERDA", pos:"TITULO" },
-    { num: 21, nome: "Luan", pos:"PE", jogos: 5, gols: 0, ass: 1, mvp: 0 },
-    { num: "x", nome: "Joeferson", pos: "PE", jogos: 5, gols: 0, ass: 0, mvp: 0 },
+    { num: 21, nome: "Luan", pos:"PE", jogos: 6, gols: 0, ass: 1,},
+    { num: "x", nome: "Joeferson", pos: "PE", jogos: 5, gols: 0, ass: 0,},
 
 ];
 
