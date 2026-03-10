@@ -1,152 +1,206 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Camp Nouve em 2026</title>
+<meta charset="UTF-8">
+<title>Camp Nouve em 2026</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url("campnouve.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            padding: 20px;
-        }
+<style>
 
-        h1 {
-            text-align: center;
-            color: white;
-            text-shadow: 2px 2px 6px black;
-            margin-bottom: 20px;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("campnouve.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 20px;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: rgba(255, 255, 255, 0.75); /* TRANSPARÊNCIA */
-            backdrop-filter: blur(4px); /* efeito vidro (opcional) */
-        }
+h1 {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 6px black;
+}
 
-        th, td {
-            border: 1px solid rgba(0, 0, 0, 0.3);
-            padding: 8px;
-            text-align: center;
-            font-weight: bold;
-        }
+#estatisticas{
+    color:white;
+    text-align:center;
+    font-weight:bold;
+    margin-bottom:20px;
+    text-shadow:2px 2px 6px black;
+    font-size:18px;
+}
 
-        th {
-            background-color: rgba(0, 0, 0, 0.85);
-            color: white;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255,255,255,0.75);
+    backdrop-filter: blur(4px);
+}
 
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-    </style>
+th, td {
+    border: 1px solid rgba(0,0,0,0.3);
+    padding: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+th {
+    background-color: rgba(0,0,0,0.85);
+    color: white;
+}
+
+tr:hover {
+    background-color: rgba(255,255,255,0.9);
+}
+
+</style>
 </head>
 
 <body>
 
 <h1>Camp Nouve em 2026</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nº</th>
-            <th>Jogador</th>
-            <th>Posição</th>
-            <th>Jogos</th>
-            <th>Gols</th>
-            <th>Assistências</th>
-        </tr>
-    </thead>
+<div id="estatisticas"></div>
 
-    <tbody id="corpo-tabela"></tbody>
+<table>
+
+<thead>
+<tr>
+    <th>Nº</th>
+    <th>Jogador</th>
+    <th>Posição</th>
+    <th>Jogos</th>
+    <th>Gols</th>
+    <th>Assistências</th>
+    <th>Competição</th>
+</tr>
+</thead>
+
+<tbody id="corpo-tabela"></tbody>
+
 </table>
 
 <script>
+
 const jogadores = [
-    { num: "", nome: "GOLEIROS", pos: "TITULO" },
-    { num: 0, nome: "Gabriel", pos: "GOL", jogos: 1, gols: 0, ass: 0,},
-    { num: "x", nome: "Marcio Vita", pos: "GOL", jogos: 3, gols: 0, ass: 0,},
-    { num: 1, nome: "Nego", pos: "GOL", jogos: 8, gols: 0, ass: 0, },
 
-    { num: "", nome: "LATERAL DIREITO", pos: "TITULO" },
-    { num: 3, nome: "Kauan", pos: "LD", jogos: 8, gols: 11, ass: 1,},
-    { num: 23, nome: "Ghust Cavalão", pos: "LD", jogos: 6, gols: 0, ass: 0,},
+{ num: "", nome: "GOLEIROS", pos: "TITULO" },
+{ num: "x", nome: "Gabriel", pos: "GOL", jogos: 1, gols: 0, ass: 0, competicao:"Amistoso"},
+{ num: "x", nome: "Marcio Vita", pos: "GOL", jogos: 3, gols: 0, ass: 0, competicao:"Festival"},
+{ num: 1, nome: "Nego", pos: "GOL", jogos: 8, gols: 0, ass: 0, competicao:"Campeonato"},
 
-    { num: "", nome: "ZAGUEIROS", pos: "TITULO" },
-    { num: 13, nome: "Brayan", pos: "ZAG", jogos: 7, gols: 0, ass: 0,},
-    { num: 22, nome: "Erik", pos: "ZAG", jogos: 7, gols: 0, ass: 0,},
-    { num: 5, nome: "Rodrigo", pos: "ZAG", jogos: 9, gols: 0, ass: 0,},
+{ num: "", nome: "LATERAL DIREITO", pos: "TITULO" },
+{ num: 12, nome: "Jaffer", pos: "LD", jogos: 8, gols: 11, ass: 1, competicao:"Festival"},
+{ num: 23, nome: "Ghust Cavalão", pos: "LD", jogos: 6, gols: 0, ass: 0, competicao:"Amistoso"},
 
-    { num: "", nome: "LATERAL ESQUERDO", pos: "TITULO" },
-    { num: 51, nome: "Paulin", pos: "LE", jogos: 10, gols: 3, ass: 0,},
-    { num: 70, nome: "Diego", pos: "LE", jogos: 4, gols: 0, ass: 0,},
-    { num: 47, nome: "Isaac", pos: "LE", jogos: 0, gols: 0, ass: 0,},
+{ num: "", nome: "ZAGUEIROS", pos: "TITULO" },
+{ num: 13, nome: "Brayan", pos: "ZAG", jogos: 7, gols: 0, ass: 0, competicao:"Campeonato"},
+{ num: 22, nome: "Erik", pos: "ZAG", jogos: 7, gols: 0, ass: 0, competicao:"Campeonato"},
+{ num: 5, nome: "Rodrigo", pos: "ZAG", jogos: 9, gols: 0, ass: 0, competicao:"Campeonato"},
 
-    { num: "", nome: "VOLANTES", pos: "TITULO" },
-    { num: 8, nome: "Adryel", pos: "VOL", jogos: 9, gols: 2, ass: 1, },
+{ num: "", nome: "LATERAL ESQUERDO", pos: "TITULO" },
+{ num: 26, nome: "Paulinho", pos: "LE", jogos: 10, gols: 3, ass: 0, competicao:"Campeonato"},
+{ num: 70, nome: "Diego", pos: "LE", jogos: 4, gols: 0, ass: 0, competicao:"Amistoso"},
+{ num: 47, nome: "Isaac", pos: "LE", jogos: 0, gols: 0, ass: 0, competicao:"-"},
 
-    { num: "", nome: "MEIO-CAMPO", pos: "TITULO" },
-    { num: 19, nome: "Jaqueson", pos: "MC", jogos: 1, gols: 0, ass: 1,},
-    { num: 36, nome: "Nikolas", pos: "MC", jogos: 7, gols: 0, ass: 2,},
+{ num: "", nome: "VOLANTES", pos: "TITULO" },
+{ num: 8, nome: "Adryel", pos: "VOL", jogos: 9, gols: 2, ass: 1, competicao:"Campeonato"},
 
-    { num: "", nome: "MEIAS ARMADORES", pos: "TITULO" },
-    { num: 99, nome: "Fernando", pos: "MEI", jogos: 4, gols: 2, ass: 1,},
-    { num: 11, nome: "Jeff", pos: "MEI", jogos: 10, gols: 2, ass: 6,},
-    { num: 77, nome: "Weslley", pos: "MEI", jogos: 7, gols: 6, ass: 4,},
-    { num: "x", nome: "Arthur", pos:"MEI", jogos: 4, gols: 0, ass: 0,},
+{ num: "", nome: "MEIO-CAMPO", pos: "TITULO" },
+{ num: 19, nome: "Jaqueson", pos: "MC", jogos: 1, gols: 0, ass: 1, competicao:"Amistoso"},
+{ num: 36, nome: "Nikolas", pos: "MC", jogos: 7, gols: 0, ass: 2, competicao:"Campeonato"},
 
-    { num: "", nome: "PONTA DIREITA", pos:"TITULO" },
-    { num: 7, nome: "D.Paiva", pos:"PD", jogos: 7, gols: 0, ass: 0,},
-    { num: 10, nome: "Cauã", pos: "PD", jogos: 6, gols: 3, ass: 1,},
+{ num: "", nome: "MEIAS ARMADORES", pos: "TITULO" },
+{ num: 99, nome: "Fernando", pos: "MEI", jogos: 4, gols: 2, ass: 1, competicao:"Festival"},
+{ num: 11, nome: "Jeff", pos: "MEI", jogos: 10, gols: 2, ass: 6, competicao:"Campeonato"},
+{ num: 80, nome: "Weslley", pos: "MEI", jogos: 7, gols: 6, ass: 4, competicao:"Campeonato"},
+{ num: 82, nome: "A.Menezes", pos:"MEI", jogos: 4, gols: 0, ass: 0, competicao:"Amistoso"},
 
-    { num: "", nome: "CENTROAVANTE", pos: "TITULO" },
-    { num: 9, nome: "Heitor", pos: "ATA", jogos: 4, gols: 1, ass: 0,},
-    { num: 90, nome: "Henrique", pos: "ATA", jogos: 0, gols: 0, ass: 0,},
-    { num: 20, nome: "Assis", pos: "ATA", jogos: 4, gols: 1, ass: 2,},
+{ num: "", nome: "PONTA DIREITA", pos:"TITULO" },
+{ num: 7, nome: "D.Paiva", pos:"PD", jogos: 7, gols: 0, ass: 0, competicao:"Campeonato"},
+{ num: 10, nome: "Cauã", pos: "PD", jogos: 6, gols: 3, ass: 1, competicao:"Festival"},
 
-    { num: "", nome: "PONTA ESQUERDA", pos:"TITULO" },
-    { num: 21, nome: "Luan", pos:"PE", jogos: 6, gols: 0, ass: 1,},
-    { num: "x", nome: "Joeferson", pos: "PE", jogos: 5, gols: 0, ass: 0,},
+{ num: "", nome: "CENTROAVANTE", pos: "TITULO" },
+{ num: 9, nome: "Heitor", pos: "ATA", jogos: 4, gols: 1, ass: 0, competicao:"Campeonato"},
+{ num: 90, nome: "Sátiro", pos: "ATA", jogos: 0, gols: 0, ass: 0, competicao:"-"},
+{ num: 20, nome: "Assis", pos: "ATA", jogos: 4, gols: 1, ass: 2, competicao:"Festival"},
+
+{ num: "", nome: "PONTA ESQUERDA", pos:"TITULO" },
+{ num: 21, nome: "Luan", pos:"PE", jogos: 6, gols: 0, ass: 1, competicao:"Campeonato"},
+{ num: "x", nome: "Joeferson", pos: "PE", jogos: 5, gols: 0, ass: 0, competicao:"Amistoso"}
 
 ];
-
 
 const tbody = document.getElementById("corpo-tabela");
 
 jogadores.forEach(j => {
-    if (j.pos === "TITULO") {
-        tbody.innerHTML += `
-            <tr>
-                <td colspan="7" style="
-                    background: rgba(0,0,0,0.8);
-                    color: white;
-                    font-weight: bold;
-                    text-align: center;
-                ">
-                    ${j.nome}
-                </td>
-            </tr>
-        `;
-    } else {
-        tbody.innerHTML += `
-            <tr>
-                <td>${j.num}</td>
-                <td>${j.nome}</td>
-                <td>${j.pos}</td>
-                <td>${j.jogos}</td>
-                <td>${j.gols}</td>
-                <td>${j.ass}</td>
-            </tr>
-        `;
-    }
-});
-</script>
 
+if (j.pos === "TITULO") {
+
+    tbody.innerHTML += `
+    <tr>
+        <td colspan="7" style="
+        background: rgba(0,0,0,0.8);
+        color: white;
+        text-align:center;
+        ">
+        ${j.nome}
+        </td>
+    </tr>
+    `;
+
+} else {
+
+    tbody.innerHTML += `
+    <tr>
+        <td>${j.num}</td>
+        <td>${j.nome}</td>
+        <td>${j.pos}</td>
+        <td>${j.jogos}</td>
+        <td>${j.gols}</td>
+        <td>${j.ass}</td>
+        <td>${j.competicao}</td>
+    </tr>
+    `;
+
+}
+
+});
+
+let totalGols = 0;
+let totalJogos = 0;
+
+let artilheiro = {nome:"", gols:0};
+let liderAssist = {nome:"", ass:0};
+
+jogadores.forEach(j => {
+
+if(j.pos !== "TITULO"){
+
+    totalGols += j.gols || 0;
+    totalJogos += j.jogos || 0;
+
+    if(j.gols > artilheiro.gols){
+        artilheiro = {nome:j.nome, gols:j.gols};
+    }
+
+    if(j.ass > liderAssist.ass){
+        liderAssist = {nome:j.nome, ass:j.ass};
+    }
+
+}
+
+});
+
+document.getElementById("estatisticas").innerHTML = `
+⚽ Gols do time: ${totalGols} |
+🎮 Jogos somados: ${totalJogos} |
+🥇 Artilheiro: ${artilheiro.nome} (${artilheiro.gols}) |
+🅰️ Líder de assistências: ${liderAssist.nome} (${liderAssist.ass})
+`;
+
+</script>
 
 </body>
 </html>
