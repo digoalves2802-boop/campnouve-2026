@@ -6,52 +6,83 @@
 
 <style>
 
-body {
-    font-family: Arial, sans-serif;
-    background-image: url("campnouve.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 20px;
+body{
+font-family:Arial,sans-serif;
+background-image:url("campnouve.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+padding:20px;
 }
 
-h1 {
-    text-align: center;
-    color: white;
-    text-shadow: 2px 2px 6px black;
+h1{
+text-align:center;
+color:white;
+text-shadow:2px 2px 6px black;
+margin-bottom:10px;
 }
 
 #estatisticas{
-    color:white;
-    text-align:center;
-    font-weight:bold;
-    margin-bottom:20px;
-    text-shadow:2px 2px 6px black;
-    font-size:18px;
+text-align:center;
+color:white;
+font-weight:bold;
+margin-bottom:20px;
+text-shadow:2px 2px 6px black;
+font-size:18px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: rgba(255,255,255,0.75);
-    backdrop-filter: blur(4px);
+table{
+width:100%;
+border-collapse:collapse;
+background-color:rgba(255,255,255,0.85);
+backdrop-filter:blur(4px);
 }
 
-th, td {
-    border: 1px solid rgba(0,0,0,0.3);
-    padding: 8px;
-    text-align: center;
-    font-weight: bold;
+th,td{
+border:1px solid rgba(0,0,0,0.3);
+padding:8px;
+text-align:center;
+font-weight:bold;
 }
 
-th {
-    background-color: rgba(0,0,0,0.85);
-    color: white;
+th{
+background-color:rgba(0,0,0,0.9);
+color:white;
 }
 
-tr:hover {
-    background-color: rgba(255,255,255,0.9);
+.subcabecalho{
+color:#111;
+font-weight:900;
+}
+
+tr:hover{
+background-color:rgba(255,255,255,0.95);
+}
+
+.artilheiro{
+color:#d4af37;
+}
+
+.assist{
+color:#0077ff;
+}
+
+.festival{
+background-color:rgba(255,230,120,0.35);
+}
+
+.copa{
+background-color:rgba(120,180,255,0.35);
+}
+
+.amistoso{
+background-color:rgba(255,200,120,0.35);
+}
+
+.titulo-setor{
+background:rgba(0,0,0,0.85);
+color:white;
 }
 
 </style>
@@ -66,15 +97,38 @@ tr:hover {
 <table>
 
 <thead>
+
 <tr>
-    <th>Nº</th>
-    <th>Jogador</th>
-    <th>Posição</th>
-    <th>Jogos</th>
-    <th>Gols</th>
-    <th>Assistências</th>
-    <th>Competição</th>
+
+<th rowspan="2">Nº</th>
+<th rowspan="2">Jogador</th>
+<th rowspan="2">Pos</th>
+
+<th colspan="4">Amistoso</th>
+<th colspan="4">Festival</th>
+<th colspan="4">Copa</th>
+
 </tr>
+
+<tr>
+
+<th class="amistoso subcabecalho">J</th>
+<th class="amistoso subcabecalho">G</th>
+<th class="amistoso subcabecalho">A</th>
+<th class="amistoso subcabecalho">G+A</th>
+
+<th class="festival subcabecalho">J</th>
+<th class="festival subcabecalho">G</th>
+<th class="festival subcabecalho">A</th>
+<th class="festival subcabecalho">G+A</th>
+
+<th class="copa subcabecalho">J</th>
+<th class="copa subcabecalho">G</th>
+<th class="copa subcabecalho">A</th>
+<th class="copa subcabecalho">G+A</th>
+
+</tr>
+
 </thead>
 
 <tbody id="corpo-tabela"></tbody>
@@ -83,122 +137,136 @@ tr:hover {
 
 <script>
 
-const jogadores = [
+const jogadores=[
 
-{ num: "", nome: "GOLEIROS", pos: "TITULO" },
-{ num: "x", nome: "Gabriel", pos: "GOL", jogos: 1, gols: 0, ass: 0, competicao:"Amistoso"},
-{ num: "x", nome: "Marcio Vita", pos: "GOL", jogos: 3, gols: 0, ass: 0, competicao:"Festival"},
-{ num: 1, nome: "Nego", pos: "GOL", jogos: 8, gols: 0, ass: 0, competicao:"Campeonato"},
+{num:"",nome:"GOLEIROS",pos:"TITULO"},
 
-{ num: "", nome: "LATERAL DIREITO", pos: "TITULO" },
-{ num: 12, nome: "Jaffer", pos: "LD", jogos: 8, gols: 11, ass: 1, competicao:"Festival"},
-{ num: 23, nome: "Ghust Cavalão", pos: "LD", jogos: 6, gols: 0, ass: 0, competicao:"Amistoso"},
+{num:"x",nome:"Gabriel",pos:"GOL",amist_j:1,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:"x",nome:"Marcio Vita",pos:"GOL",amist_j:3,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:1,nome:"Nego",pos:"GOL",amist_j:8,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
-{ num: "", nome: "ZAGUEIROS", pos: "TITULO" },
-{ num: 13, nome: "Brayan", pos: "ZAG", jogos: 7, gols: 0, ass: 0, competicao:"Campeonato"},
-{ num: 22, nome: "Erik", pos: "ZAG", jogos: 7, gols: 0, ass: 0, competicao:"Campeonato"},
-{ num: 5, nome: "Rodrigo", pos: "ZAG", jogos: 9, gols: 0, ass: 0, competicao:"Campeonato"},
+{num:"",nome:"LATERAL DIREITO",pos:"TITULO"},
 
-{ num: "", nome: "LATERAL ESQUERDO", pos: "TITULO" },
-{ num: 26, nome: "Paulinho", pos: "LE", jogos: 10, gols: 3, ass: 0, competicao:"Campeonato"},
-{ num: 70, nome: "Diego", pos: "LE", jogos: 4, gols: 0, ass: 0, competicao:"Amistoso"},
-{ num: 47, nome: "Isaac", pos: "LE", jogos: 0, gols: 0, ass: 0, competicao:"-"},
+{num:12,nome:"Jaffer",pos:"LD",amist_j:8,amist_g:11,amist_a:1,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:23,nome:"Ghust Cavalão",pos:"LD",amist_j:6,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
-{ num: "", nome: "VOLANTES", pos: "TITULO" },
-{ num: 8, nome: "Adryel", pos: "VOL", jogos: 9, gols: 2, ass: 1, competicao:"Campeonato"},
+{num:"",nome:"ZAGUEIROS",pos:"TITULO"},
 
-{ num: "", nome: "MEIO-CAMPO", pos: "TITULO" },
-{ num: 19, nome: "Jaqueson", pos: "MC", jogos: 1, gols: 0, ass: 1, competicao:"Amistoso"},
-{ num: 36, nome: "Nikolas", pos: "MC", jogos: 7, gols: 0, ass: 2, competicao:"Campeonato"},
+{num:13,nome:"Brayan",pos:"ZAG",amist_j:7,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:22,nome:"Erik",pos:"ZAG",amist_j:7,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:5,nome:"Rodrigo",pos:"ZAG",amist_j:9,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:1,copa_g:0,copa_a:0},
 
-{ num: "", nome: "MEIAS ARMADORES", pos: "TITULO" },
-{ num: 99, nome: "Fernando", pos: "MEI", jogos: 4, gols: 2, ass: 1, competicao:"Festival"},
-{ num: 11, nome: "Jeff", pos: "MEI", jogos: 10, gols: 2, ass: 6, competicao:"Campeonato"},
-{ num: 80, nome: "Weslley", pos: "MEI", jogos: 7, gols: 6, ass: 4, competicao:"Campeonato"},
-{ num: 82, nome: "A.Menezes", pos:"MEI", jogos: 4, gols: 0, ass: 0, competicao:"Amistoso"},
+{num:"",nome:"LATERAL ESQUERDO",pos:"TITULO"},
 
-{ num: "", nome: "PONTA DIREITA", pos:"TITULO" },
-{ num: 7, nome: "D.Paiva", pos:"PD", jogos: 7, gols: 0, ass: 0, competicao:"Campeonato"},
-{ num: 10, nome: "Cauã", pos: "PD", jogos: 6, gols: 3, ass: 1, competicao:"Festival"},
+{num:26,nome:"Paulinho",pos:"LE",amist_j:10,amist_g:3,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:70,nome:"Diego",pos:"LE",amist_j:4,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:47,nome:"Isaac",pos:"LE",amist_j:0,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
-{ num: "", nome: "CENTROAVANTE", pos: "TITULO" },
-{ num: 9, nome: "Heitor", pos: "ATA", jogos: 4, gols: 1, ass: 0, competicao:"Campeonato"},
-{ num: 90, nome: "Sátiro", pos: "ATA", jogos: 0, gols: 0, ass: 0, competicao:"-"},
-{ num: 20, nome: "Assis", pos: "ATA", jogos: 4, gols: 1, ass: 2, competicao:"Festival"},
+{num:"",nome:"VOLANTES",pos:"TITULO"},
 
-{ num: "", nome: "PONTA ESQUERDA", pos:"TITULO" },
-{ num: 21, nome: "Luan", pos:"PE", jogos: 6, gols: 0, ass: 1, competicao:"Campeonato"},
-{ num: "x", nome: "Joeferson", pos: "PE", jogos: 5, gols: 0, ass: 0, competicao:"Amistoso"}
+{num:8,nome:"Adryel",pos:"VOL",amist_j:9,amist_g:2,amist_a:1,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+
+{num:"",nome:"MEIO-CAMPO",pos:"TITULO"},
+
+{num:19,nome:"Jaqueson",pos:"MC",amist_j:1,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:36,nome:"Nikolas",pos:"MC",amist_j:7,amist_g:0,amist_a:2,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+
+{num:"",nome:"MEIAS ARMADORES",pos:"TITULO"},
+
+{num:99,nome:"Fernando",pos:"MEI",amist_j:4,amist_g:2,amist_a:1,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:11,nome:"Jeff",pos:"MEI",amist_j:10,amist_g:2,amist_a:6,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:80,nome:"Weslley",pos:"MEI",amist_j:7,amist_g:6,amist_a:4,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:82,nome:"A.Menezes",pos:"MEI",amist_j:4,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+
+{num:"",nome:"PONTA DIREITA",pos:"TITULO"},
+
+{num:7,nome:"D.Paiva",pos:"PD",amist_j:7,amist_g:0,amist_a:0,fest_j:1,fest_g:2,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:10,nome:"Cauã",pos:"PD",amist_j:6,amist_g:3,amist_a:1,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+
+{num:"",nome:"CENTROAVANTE",pos:"TITULO"},
+
+{num:9,nome:"Heitor",pos:"ATA",amist_j:4,amist_g:1,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:90,nome:"Sátiro",pos:"ATA",amist_j:0,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:20,nome:"Assis",pos:"ATA",amist_j:4,amist_g:1,amist_a:2,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+
+{num:"",nome:"PONTA ESQUERDA",pos:"TITULO"},
+
+{num:21,nome:"Luan",pos:"PE",amist_j:6,amist_g:0,amist_a:1,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:"x",nome:"Joeferson",pos:"PE",amist_j:5,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0}
 
 ];
 
-const tbody = document.getElementById("corpo-tabela");
+const tbody=document.getElementById("corpo-tabela");
 
-jogadores.forEach(j => {
+let totalGols=0;
+let totalJogos=0;
 
-if (j.pos === "TITULO") {
+let artilheiro={nome:"",gols:0};
+let liderAssist={nome:"",ass:0};
 
-    tbody.innerHTML += `
-    <tr>
-        <td colspan="7" style="
-        background: rgba(0,0,0,0.8);
-        color: white;
-        text-align:center;
-        ">
-        ${j.nome}
-        </td>
-    </tr>
-    `;
+jogadores.forEach(j=>{
 
-} else {
+if(j.pos==="TITULO"){
 
-    tbody.innerHTML += `
-    <tr>
-        <td>${j.num}</td>
-        <td>${j.nome}</td>
-        <td>${j.pos}</td>
-        <td>${j.jogos}</td>
-        <td>${j.gols}</td>
-        <td>${j.ass}</td>
-        <td>${j.competicao}</td>
-    </tr>
-    `;
-
-}
-
-});
-
-let totalGols = 0;
-let totalJogos = 0;
-
-let artilheiro = {nome:"", gols:0};
-let liderAssist = {nome:"", ass:0};
-
-jogadores.forEach(j => {
-
-if(j.pos !== "TITULO"){
-
-    totalGols += j.gols || 0;
-    totalJogos += j.jogos || 0;
-
-    if(j.gols > artilheiro.gols){
-        artilheiro = {nome:j.nome, gols:j.gols};
-    }
-
-    if(j.ass > liderAssist.ass){
-        liderAssist = {nome:j.nome, ass:j.ass};
-    }
-
-}
-
-});
-
-document.getElementById("estatisticas").innerHTML = `
-⚽ Gols do time: ${totalGols} |
-🎮 Jogos somados: ${totalJogos} |
-🥇 Artilheiro: ${artilheiro.nome} (${artilheiro.gols}) |
-🅰️ Líder de assistências: ${liderAssist.nome} (${liderAssist.ass})
+tbody.innerHTML+=`
+<tr>
+<td colspan="16" class="titulo-setor">${j.nome}</td>
+</tr>
 `;
+
+}else{
+
+let jogosTotal=j.amist_j+j.fest_j+j.copa_j;
+let golsTotal=j.amist_g+j.fest_g+j.copa_g;
+let assistTotal=j.amist_a+j.fest_a+j.copa_a;
+
+totalGols+=golsTotal;
+totalJogos+=jogosTotal;
+
+if(golsTotal>artilheiro.gols){
+artilheiro={nome:j.nome,gols:golsTotal};
+}
+
+if(assistTotal>liderAssist.ass){
+liderAssist={nome:j.nome,ass:assistTotal};
+}
+
+let classeGols=golsTotal===artilheiro.gols?"artilheiro":"";
+let classeAssist=assistTotal===liderAssist.ass?"assist":"";
+
+tbody.innerHTML+=`
+
+<tr>
+
+<td>${j.num}</td>
+<td>${j.nome}</td>
+<td>${j.pos}</td>
+
+<td class="amistoso">${j.amist_j}</td>
+<td class="amistoso ${classeGols}">${j.amist_g}</td>
+<td class="amistoso ${classeAssist}">${j.amist_a}</td>
+<td class="amistoso">${j.amist_g+j.amist_a}</td>
+
+<td class="festival">${j.fest_j}</td>
+<td class="festival ${classeGols}">${j.fest_g}</td>
+<td class="festival ${classeAssist}">${j.fest_a}</td>
+<td class="festival">${j.fest_g+j.fest_a}</td>
+
+<td class="copa">${j.copa_j}</td>
+<td class="copa ${classeGols}">${j.copa_g}</td>
+<td class="copa ${classeAssist}">${j.copa_a}</td>
+<td class="copa">${j.copa_g+j.copa_a}</td>
+
+</tr>
+
+`;
+
+}
+
+});
+
+document.getElementById("estatisticas").innerHTML=
+`⚽ Gols do time: ${totalGols} | 🎮 Jogos somados: ${totalJogos} | 🥇 Artilheiro: ${artilheiro.nome} (${artilheiro.gols}) | 🅰️ Líder de assistências: ${liderAssist.nome} (${liderAssist.ass})`;
 
 </script>
 
