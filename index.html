@@ -35,7 +35,7 @@ font-size:18px;
 table{
 width:100%;
 border-collapse:collapse;
-background-color:rgb(255, 255, 255);
+background-color:rgb(175, 175, 175);
 backdrop-filter:blur(4px);
 }
 
@@ -48,20 +48,20 @@ font-weight:bold;
 
 th{
 background-color:rgba(0,0,0,0.9);
-color:white;
+color:rgb(255, 255, 255);
 }
 
 .subcabecalho{
-color:#111;
+color:#000000;
 font-weight:900;
 }
 
 tr:hover{
-background-color:rgba(255, 255, 255, 0.95);
+background-color:rgba(175, 175, 175, 0.95);
 }
 
 .artilheiro{
-color:#ffc400;
+color:#fffb00;
 }
 
 .assist{
@@ -77,12 +77,12 @@ background-color:rgb(120, 183, 255);
 }
 
 .amistoso{
-background-color:rgb(255, 255, 255);
+background-color:rgb(175, 175, 175);
 }
 
 .titulo-setor{
 background:rgba(0,0,0,0.85);
-color:white;
+color:rgb(255, 255, 255);
 }
 
 </style>
@@ -141,53 +141,53 @@ const jogadores=[
 
 {num:"",nome:"GOLEIROS",pos:"TITULO"},
 
-{num:"x",nome:"Gabriel",pos:"GOL",amist_j:1,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:"x",nome:"Gabriel",pos:"GOL",amist_j:1,amist_g:0,amist_a:0,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 {num:"x",nome:"Marcio Vita",pos:"GOL",amist_j:3,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
-{num:1,nome:"Nego",pos:"GOL",amist_j:8,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:1,nome:"Nego",pos:"GOL",amist_j:8,amist_g:0,amist_a:0,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"LATERAL DIREITO",pos:"TITULO"},
 
-{num:12,nome:"Jaffer",pos:"LD",amist_j:8,amist_g:11,amist_a:1,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:12,nome:"Jaffer",pos:"LD",amist_j:8,amist_g:11,amist_a:1,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 {num:23,nome:"Ghust Cavalão",pos:"LD",amist_j:6,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"ZAGUEIROS",pos:"TITULO"},
 
-{num:13,nome:"Brayan",pos:"ZAG",amist_j:7,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
-{num:22,nome:"Erik",pos:"ZAG",amist_j:7,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
-{num:5,nome:"Rodrigo",pos:"ZAG",amist_j:9,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:13,nome:"Brayan",pos:"ZAG",amist_j:7,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:22,nome:"Erik",pos:"ZAG",amist_j:7,amist_g:0,amist_a:0,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:5,nome:"Rodrigo",pos:"ZAG",amist_j:9,amist_g:0,amist_a:0,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"LATERAL ESQUERDO",pos:"TITULO"},
 
-{num:26,nome:"Paulinho",pos:"LE",amist_j:10,amist_g:3,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
-{num:70,nome:"Diego",pos:"LE",amist_j:4,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:26,nome:"Paulinho",pos:"LE",amist_j:10,amist_g:3,amist_a:0,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:70,nome:"Diego",pos:"LE",amist_j:4,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 {num:47,nome:"Isaac",pos:"LE",amist_j:0,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"VOLANTES",pos:"TITULO"},
 
-{num:8,nome:"Adryel",pos:"VOL",amist_j:9,amist_g:2,amist_a:1,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:8,nome:"Adryel",pos:"VOL",amist_j:9,amist_g:2,amist_a:1,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"MEIO-CAMPO",pos:"TITULO"},
 
 {num:19,nome:"Jaqueson",pos:"MC",amist_j:1,amist_g:1,amist_a:1,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
-{num:36,nome:"Nikolas",pos:"MC",amist_j:7,amist_g:0,amist_a:2,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:36,nome:"Nikolas",pos:"MC",amist_j:7,amist_g:0,amist_a:2,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"MEIAS ARMADORES",pos:"TITULO"},
 
 {num:99,nome:"Fernando",pos:"MEI",amist_j:4,amist_g:2,amist_a:1,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 {num:11,nome:"Jeff",pos:"MEI",amist_j:10,amist_g:2,amist_a:6,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
-{num:80,nome:"Weslley",pos:"MEI",amist_j:7,amist_g:6,amist_a:4,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
-{num:82,nome:"A.Menezes",pos:"MEI",amist_j:4,amist_g:0,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:80,nome:"Weslley",pos:"MEI",amist_j:7,amist_g:6,amist_a:4,fest_j:1,fest_g:0,fest_a:1,copa_j:0,copa_g:0,copa_a:0},
+{num:82,nome:"A.Menezes",pos:"MEI",amist_j:4,amist_g:0,amist_a:0,fest_j:2,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"PONTA DIREITA",pos:"TITULO"},
 
-{num:7,nome:"D.Paiva",pos:"PD",amist_j:7,amist_g:0,amist_a:0,fest_j:1,fest_g:2,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:7,nome:"D.Paiva",pos:"PD",amist_j:7,amist_g:0,amist_a:0,fest_j:2,fest_g:3,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 {num:10,nome:"Cauã",pos:"PD",amist_j:6,amist_g:3,amist_a:1,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"CENTROAVANTE",pos:"TITULO"},
 
-{num:9,nome:"Heitor",pos:"ATA",amist_j:4,amist_g:1,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:9,nome:"Heitor",pos:"ATA",amist_j:4,amist_g:1,amist_a:0,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 {num:90,nome:"Sátiro",pos:"ATA",amist_j:0,amist_g:0,amist_a:0,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
-{num:20,nome:"Assis",pos:"ATA",amist_j:4,amist_g:1,amist_a:2,fest_j:0,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
+{num:20,nome:"Assis",pos:"ATA",amist_j:4,amist_g:1,amist_a:2,fest_j:1,fest_g:0,fest_a:0,copa_j:0,copa_g:0,copa_a:0},
 
 {num:"",nome:"PONTA ESQUERDA",pos:"TITULO"},
 
